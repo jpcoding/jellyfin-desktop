@@ -2,6 +2,13 @@
 
 IDI_ICON1 ICON "@CMAKE_SOURCE_DIR@/resources/win/jellyfin.ico"
 
+// Application manifest: declares Per-Monitor-V2 DPI awareness so the process
+// receives WM_DPICHANGED across mixed-DPI monitors and is not bitmap-stretched
+// by the DWM. libmpv links into this process and does not set awareness itself;
+// the standalone mpv.exe manifest does not apply here.
+// 1 == CREATEPROCESS_MANIFEST_RESOURCE_ID, 24 == RT_MANIFEST.
+1 24 "@CMAKE_SOURCE_DIR@/resources/win/jellyfin-desktop.manifest"
+
 VS_VERSION_INFO VERSIONINFO
 FILEVERSION     @APP_VERSION_MAJOR@,@APP_VERSION_MINOR@,@APP_VERSION_PATCH@,0
 PRODUCTVERSION  @APP_VERSION_MAJOR@,@APP_VERSION_MINOR@,@APP_VERSION_PATCH@,0
